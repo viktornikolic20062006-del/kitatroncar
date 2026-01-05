@@ -1,0 +1,145 @@
+* {
+    box-sizing: border-box;
+    font-family: "Comic Sans MS", cursive;
+    user-select: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background: black;
+    overflow: hidden;
+}
+
+#container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* LEVI DEO: Google mapa */
+#map-container {
+    width: 20%;
+    height: 100%;
+}
+
+/* DESNI DEO: tablet */
+#tablet {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    --shake: 0;
+    animation: shake 0.1s infinite;
+}
+
+/* SHAKE ANIMACIJA */
+@keyframes shake {
+    0% { transform: translate(0,0); }
+    25% { transform: translate(calc(var(--shake)*1px), calc(var(--shake)*-1px)); }
+    50% { transform: translate(calc(var(--shake)*-1px), calc(var(--shake)*1px)); }
+    75% { transform: translate(calc(var(--shake)*2px), calc(var(--shake)*-2px)); }
+    100% { transform: translate(0,0); }
+}
+
+/* FLASH */
+@keyframes bgFlash {
+    0% { background: red; }
+    25% { background: lime; }
+    50% { background: cyan; }
+    75% { background: magenta; }
+    100% { background: yellow; }
+}
+
+.flash { animation: bgFlash 0.2s infinite linear; }
+.paused * { animation-play-state: paused !important; }
+
+/* SOUNDBOARD */
+#soundboard {
+    height: 60%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+.sound-btn {
+    border: 6px solid black;
+    font-weight: bold;
+    cursor: pointer;
+    animation: bgFlash 0.15s infinite;
+}
+
+/* MUSIC SELECT */
+#music-select {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#song-dropdown {
+    padding: 12px 20px;
+    border: 5px dashed black;
+    font-family: "Comic Sans MS", cursive;
+    background: lime;
+    color: magenta;
+    font-size: 20px;
+    cursor: pointer;
+    animation: bgFlash 0.3s infinite;
+}
+
+/* PLAYER */
+#player {
+    padding: 10px;
+}
+
+#sliders {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+input[type=range] {
+    width: 100%;
+    height: 30px;
+    cursor: grab;
+}
+
+#controls {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ctrl {
+    padding: 10px;
+    border: 5px solid black;
+    animation: bgFlash 0.25s infinite;
+}
+
+#container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+/* LEVI PANEL - GPS mapa */
+#map-panel {
+    width: 20%; /* levo 20% */
+    height: 100%;
+    border-right: 2px solid #fff;
+}
+
+/* DESNI PANEL - tablet / soundboard */
+#tablet {
+    width: 80%; /* desno 80% */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    --shake: 0;
+    animation: shake 0.1s infinite;
+}
