@@ -148,3 +148,33 @@ function randomizeColors() {
     });
 }
 setInterval(() => { if(flashingEnabled) randomizeColors(); }, 150);
+
+
+
+
+const mapFrame = document.getElementById("gps-map");
+
+function updateMap(lat, lng) {
+    // Google Maps embed link sa lat/lng
+    mapFrame.src = `https://www.google.com/maps?q=${lat},${lng}&z=16&output=embed`;
+}
+
+// Proveri da li browser podržava geolokaciju
+if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(
+        (position) => {
+            const { latitude, longitude } = position.coords;
+            updateMap(latitude, longitude);
+        },
+        (error) => {
+            console.error("Ne mogu da dobijem lokaciju:", error);
+        },
+        {
+            enableHighAccuracy: true,
+            maximumAge: 10000,
+            timeout: 5000
+        }
+    );
+} else {
+    alert("Geolokacija nije podržana u ovom browseru.");
+}
